@@ -17,7 +17,7 @@
 
 .figure-2{
   outline: 1px solid purple;
-  height: 20vh;
+  height: 30vh;
   width: 30vw;
   float: right;
   z-index: 13;
@@ -25,7 +25,7 @@
 
 img{
   outline: 1px solid green;
-  width: 30%;
+  width: 70%;
 
 }
 
