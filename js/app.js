@@ -1,54 +1,33 @@
-let begin = () => {
+const begin = () => {
   // declarando las funciones
-  debugger
-  document.addEventListener('dragenter', enter);
-  // document.addEventListener('dragstart', star);
-  document.addEventListener('dragleave', leave);
-  document.addEventListener('dragover', over);
+  // debugger;
 
-  // let dragIcon = document.createElement('img');
-  // dragIcon.src = 'logo.jpg';
-  // dragIcon.width = 100;
-
-  function star(event) {
+  const start = (event) => {
     event.preventDefault();
-    event.dataTransfer.effecAllowed = 'move';
+    event.dataTransfer.effecAllowed = 'copy';
     event.dataTransfer.setData('Data', event.target.id);
-    // e.dataTransfer.setDragImage(dragIcon);
     // para poder darle opacidad a la imagen
-    event.style.opacity = '0.4';
-  }
+    // event.style.opacity = '0.4';
+  };
 
-  function end(event) {
+  const drop = (event) => {
     event.preventDefault();
-    event.target.style.opacity = 1;
-    event.dataTransfer.clearData('Data');
-  }
+  };
 
-  function enter(event) {
+  const over = (event) => {
     event.preventDefault();
-    event.target.style.border = '0.2em dotted black';
-  }
+    if (event.target.className === 'new') {
+    // let figureTest = document.getElementById('#figure-test');
+      let elementCopy = event.dataTransfer.getData('Data');
+      // event.dataTransfer.getData('Data');
+      // test.appendChild(document.getElementById('elementCopy'));
+      event.target.appendChild(document.getElementById(elementCopy));
+    }
+  };
 
-  function leave(event) {
-    event.preventDefault();
-    event.target.style.border = '1em solid purple';
-  }
-
-  function over(event) {
-    event.preventDefault();
-    let elementMove = event.dataTransfer.getData('Data');
-    let id = even.target.id;
-  }
-
-  function newPosition(event) {
-    event.preventDefault();
-    let elementMove = document.getElementById(event.dataTransfer.getData('Data'));
-    elementMove.opacity = 1;
-    let cloneElement = elementMove.cloneNode(true);
-    cloneElement.style.newPosition = 'static';
-    event.target.appendChild('figure-1', elementMove);
-  }
+  ('img').addEventListener('dragstart', start);
+  ('#figure-test').addEventListener('drop', drop);
+  ('#figure-test').addEventListener('dragover', over);
 };
 
 window.addEventListener('load', begin);
