@@ -6,8 +6,6 @@ const begin = () => {
     event.preventDefault();
     event.dataTransfer.effecAllowed = 'copy';
     event.dataTransfer.setData('Data', event.target.id);
-    // para poder darle opacidad a la imagen
-    // event.style.opacity = '0.4';
   };
 
   const drop = (event) => {
@@ -21,6 +19,8 @@ const begin = () => {
       let elementCopy = event.dataTransfer.getData('Data');
       // event.dataTransfer.getData('Data');
       // test.appendChild(document.getElementById('elementCopy'));
+      event.target.setAttribute('src', event.target.src);
+      console.log(event.target);
       event.target.appendChild(document.getElementById(elementCopy));
     }
   };
