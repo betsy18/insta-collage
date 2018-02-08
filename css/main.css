@@ -4,3 +4,37 @@
   box-sizing: border-box;
 }
 
+/* div{
+  outline: 1px solid black;
+} */
+
+.figure-1 {
+  outline: 1px solid black;
+  height: 50vh;
+  width: 20vw;
+  z-index: 12;
+}
+
+.figure-2{
+  outline: 1px solid purple;
+  height: 20vh;
+  width: 30vw;
+  float: right;
+  z-index: 13;
+}
+
+img{
+  outline: 1px solid green;
+  width: 30%;
+
+}
+
+.section-choose-img figure{
+  height: 45vh;
+  width: 85vw;
+}
+
+[draggable] {
+  cursor: move;
+}
+
