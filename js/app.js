@@ -1,33 +1,23 @@
 const begin = () => {
-  // declarando las funciones
-  // debugger;
-
-  const start = (event) => {
-    event.preventDefault();
-    event.dataTransfer.effecAllowed = 'copy';
-    event.dataTransfer.setData('Data', event.target.id);
+ // declarando las variables
+  let boxChoose = document.getElementById('box-choose');
+  let boxDestiny = document.getElementById('box-destiny');
+  
+  boxChoose.ondragstart = (event) => {
+    event.dataTransfer.setData('content', event.target.id);
   };
 
-  const drop = (event) => {
+  boxDestiny.ondragover = (event) => {
+    console.log('ondragover');
     event.preventDefault();
   };
 
-  const over = (event) => {
-    event.preventDefault();
-    if (event.target.className === 'new') {
-    // let figureTest = document.getElementById('#figure-test');
-      let elementCopy = event.dataTransfer.getData('Data');
-      // event.dataTransfer.getData('Data');
-      // test.appendChild(document.getElementById('elementCopy'));
-      event.target.setAttribute('src', event.target.src);
-      console.log(event.target);
-      event.target.appendChild(document.getElementById(elementCopy));
-    }
+  boxDestiny.ondrop = (event) => {
+    let element = document.getElementById(event.dataTransfer.getData('content'));
+    let elementCopy = element.cloneNode(true); 
+    elementCopy.id = element.id + 1 ; 
+    event.target.appendChild(elementCopy); 
   };
-
-  ('img').addEventListener('dragstart', start);
-  ('#figure-test').addEventListener('drop', drop);
-  ('#figure-test').addEventListener('dragover', over);
 };
 
 window.addEventListener('load', begin);
